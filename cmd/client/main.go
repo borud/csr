@@ -74,17 +74,21 @@ func main() {
 
 	csrBytes, _ := x509.CreateCertificateRequest(rand.Reader, &template, priv)
 	csrPem := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE REQUEST", Bytes: csrBytes})
+	fmt.Printf("csrBytes size: %d\n", len(csrBytes))
+	fmt.Printf("  csrPEM size: %d\n\n", len(csrPem))
+
+	fmt.Printf("%s\n", csrPem)
 
 	resp, err := http.Post("http://localhost:8881/sign", "application/x-pem-file", bytes.NewBuffer(csrPem))
 	if err != nil {
 		log.Fatalf("error performing POST to server: %v", err)
 	}
 
-	defer resp.Body.Close()
 	responseBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalf("failed to read response body: %v", err)
 	}
+	resp.Body.Close()
 
 	fmt.Printf("Client certificate signed by server:\n%s\n", responseBody)
 

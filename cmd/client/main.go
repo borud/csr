@@ -98,6 +98,8 @@ func main() {
 		log.Fatalf("error parsing certificate: %v", err)
 	}
 
+	fmt.Printf("PEM size: %d\n", len(responseBody))
+	fmt.Printf("certificate size: %d\n", len(block.Bytes))
 	fmt.Printf("Issuer: %s\n", cert.Issuer)
 	fmt.Printf("Authority Key ID: %x\n", cert.AuthorityKeyId)
 	fmt.Printf("Public key algorithm: %s\n", cert.PublicKeyAlgorithm)

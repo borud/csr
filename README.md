@@ -6,9 +6,9 @@ This repository is just a sketch to outline how to
 
 - Generate an ED25519 based keypair
 - Create a Certificate Signing Request (CSR)
-- Send the certificate to a server
-- Sign the certificate
-- Return it to the client
+- Send the CSR to a server
+- Sign the certificate in the CSR
+- Return signed certificate to the client
 
 ## Building
 

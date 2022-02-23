@@ -78,3 +78,7 @@ Issuer: O=Blind Faith Inc
 Authority Key ID: e7f5f6b6b1e8f31bd5b8e2573e0ecc0215204770
 Public key algorithm: Ed25519
 ```
+
+## `csrparse`
+
+This is a utility to parse and dump CSR.  This can be used to verify that you can parse the CSR from other systems if you need to.
